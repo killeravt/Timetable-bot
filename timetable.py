@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 from telebot import types
 bot = telebot.TeleBot("1467455929:AAFyqb9WXV5s31HRO3s3DQ1ZpLFR2-kg1sM")
-
 @bot.message_handler(commands=['start'])
 def start_handler(message):
   bot.send_message(message.chat.id, "Для получения ссылки на скачку расписания пропиши: /link. Для отображения информации для входа конференций Zoom пропиши: /info")
@@ -62,13 +61,13 @@ def voyna_handler(message):
 
 @bot.message_handler(commands=['giyasov'])
 def giyasov_handler(message):
-  bot.send_message(message.chat.id, "Гіясов Гусейн Аббасович/Спеціальні предмети")
+  bot.send_message(message.chat.id, "Гіясов Гусейн Аббасович/Спеціальність")
   bot.send_message(message.chat.id, "7863304882")
   bot.send_message(message.chat.id, "953197")
 
 @bot.message_handler(commands=['rudn'])
 def rudn_handler(message):
-  bot.send_message(message.chat.id, "Рудницька Л.В./Спеціальні предмети")
+  bot.send_message(message.chat.id, "Рудницька Л.В./Історія України")
   bot.send_message(message.chat.id, "93463988582")
   bot.send_message(message.chat.id, "026623")
 
@@ -104,7 +103,6 @@ def shyr_handler(message):
 
 @bot.message_handler(commands=['info'])
 def info_handler(message):
-  bot.send_message(message.chat.id, "Команды для преподов: /ukr - Укр мова, /cult Культорологiя, /bezk Шкільна математика, /kotov Економiка, Основи екологiї, /varenik Фізкультура, /voyna Філософія, /giyasov Програмування, /milash Програмування, /rudn Історія України, /ukrprof Проф. укр. мова, /fortuna Висша математика, /opolsky Фізика, /shyr Англ. мова")
+  bot.send_message(message.chat.id, "Команды для зума: \n/ukr - Укр мова\n /cult Культорологiя\n /bezk Шкільна математика\n /kotov Економiка/Основи екологiї\n /varenik Фізкультура\n /voyna Філософія\n /giyasov Програмування\n /milash Програмування\n /rudn Історія України\n /ukrprof Проф. укр. мова\n /fortuna Висша математика\n /opolsky Фізика\n /shyr Англ. мова")
 
 bot.polling(none_stop = True)
-
