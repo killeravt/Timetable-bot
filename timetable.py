@@ -91,7 +91,7 @@ def fortuna_handler(message):
 
 @bot.message_handler(commands=['opolsky'])
 def opolsky_handler(message):
-  bot.send_message(message.chat.id, "Фортуна Василь Васильович/Висша математика")
+  bot.send_message(message.chat.id, "Опольський Михайло Владиславович/Фізика")
   bot.send_message(message.chat.id, "3832414713")
   bot.send_message(message.chat.id, "12345")
 
