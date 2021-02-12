@@ -101,6 +101,12 @@ def shyr_handler(message):
   bot.send_message(message.chat.id, "3349349410")
   bot.send_message(message.chat.id, "426902")
 
+@bot.message_handler(commands=['yagoda'])
+def yagoda_handler(message):
+  bot.send_message(message.chat.id, "Ягодзінський Сергій Миколайович/Вища математика або Дискретна математика")
+  bot.send_message(message.chat.id, "4023349912")
+  bot.send_message(message.chat.id, "12345")
+
 @bot.message_handler(commands=['info'])
 def info_handler(message):
   bot.send_message(message.chat.id, "Команды для зума: \n/ukr - Укр мова\n /cult Культорологiя\n /bezk Шкільна математика\n /kotov Економiка/Основи екологiї\n /varenik Фізкультура\n /voyna Філософія\n /giyasov Програмування\n /milash Програмування\n /rudn Історія України\n /ukrprof Проф. укр. мова\n /fortuna Висша математика\n /opolsky Фізика\n /shyr Англ. мова")
