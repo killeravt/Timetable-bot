@@ -1,5 +1,8 @@
 requests
 bs4
 pyTelegramBotAPI
+schedule
+Process
+threading
 
 
