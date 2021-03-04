@@ -2,6 +2,6 @@ requests
 bs4
 pyTelegramBotAPI
 schedule
-threading
+
 
 
