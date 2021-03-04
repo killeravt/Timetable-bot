@@ -1,7 +1,11 @@
 import telebot
+import schedule
+import sched, time
+import threading
 import requests
 from bs4 import BeautifulSoup
 from telebot import types
+from multiprocessing.context import Process
 bot = telebot.TeleBot("1467455929:AAFyqb9WXV5s31HRO3s3DQ1ZpLFR2-kg1sM")
 @bot.message_handler(commands=['start'])
 def start_handler(message):
@@ -10,6 +14,69 @@ def start_handler(message):
 @bot.message_handler(commands=['help'])
 def help_handler(message):
   bot.send_message(message.chat.id,"/link - для получения информации, /info - пароли для зума")
+
+group_id = -403477493
+#-403477493
+@bot.message_handler(commands=['test'])
+def test_message():
+  URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
+  headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
+  full_page = requests.get(URL, headers=headers)
+  soup = BeautifulSoup(full_page.content, 'html.parser')
+  c = 91
+  roz = soup.findAll('a', href=True)[c]
+  res = roz
+  if "2 курс (ФЕМ, ФІСТ)" in res:
+    cont = "yes"
+  else:
+    cont = "no"
+  if cont == "yes":
+    orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
+    orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+    bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
+  if cont == "no":
+    if "3 курс (ФЕМ, ФІСТ)" in res:
+      URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
+      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
+      full_page = requests.get(URL, headers=headers)
+      soup = BeautifulSoup(full_page.content, 'html.parser')
+      roz = soup.findAll('a', href=True)[c-1]
+      res = roz
+      orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
+      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
+    if "4 курс (ФЕМ, ФІСТ)" in res:
+      URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
+      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
+      full_page = requests.get(URL, headers=headers)
+      soup = BeautifulSoup(full_page.content, 'html.parser')
+      roz = soup.findAll('a', href=True)[c-2]
+      res = roz
+      orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
+      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
+    if "1 курс (всі спеціальності)" in res:
+      URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
+      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
+      full_page = requests.get(URL, headers=headers)
+      soup = BeautifulSoup(full_page.content, 'html.parser')
+      roz = soup.findAll('a', href=True)[c+1]
+      res = roz
+      orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
+      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
+
+schedule.every().friday.at("19:00").do(test_message)
+
+class ScheduleMessage():
+  def try_send_schedule():
+    while True:
+      schedule.run_pending()
+      time.sleep(1)
+ 
+  def start_process():
+    p1 = Process(target=ScheduleMessage.try_send_schedule, args=())
+    p1.start()
 
 @bot.message_handler(commands=['link'])
 def link_handler(message):
@@ -59,7 +126,6 @@ def link_handler(message):
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
       orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(message.chat.id, orig2)
-
 
 @bot.message_handler(commands=['ukr'])
 def ukr_handler(message):
@@ -149,4 +215,10 @@ def yagoda_handler(message):
 def info_handler(message):
   bot.send_message(message.chat.id, "Команды для зума: \n/ukr - Укр мова\n /cult Культорологiя\n /bezk Шкільна математика\n /kotov Економiка/Основи екологiї\n /varenik Фізкультура\n /voyna Філософія\n /giyasov Програмування\n /milash Програмування\n /rudn Історія України\n /ukrprof Проф. укр. мова\n /fortuna Висша математика\n /opolsky Фізика\n /shyr Англ. мова\n /yagoda Вища математика або Дискретна математика")
 
-bot.polling(none_stop = True)
+if __name__ == '__main__':
+  ScheduleMessage.start_process()
+  try:
+    bot.polling(none_stop=True)
+  except:
+    pass
+
