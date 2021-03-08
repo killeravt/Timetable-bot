@@ -16,7 +16,7 @@ def help_handler(message):
   bot.send_message(message.chat.id,"/link - для получения информации, /info - пароли для зума")
 
 group_id = -403477493
-#-403477493
+
 @bot.message_handler(commands=['test'])
 def test_message():
   URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
