@@ -89,6 +89,7 @@ def link_handler(message):
   c = 93
   roz = soup.findAll('a', href=True)[c]
   res = roz
+  bot.send_message(message.chat.id, roz)
   if "2 курс (ФЕМ, ФІСТ)" in res:
     cont = "yes"
   else:
