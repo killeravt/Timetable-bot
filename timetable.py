@@ -19,10 +19,6 @@ group_id = -403477493
 #-403477493
 #-599081025
 
-@bot.message_handler(commands=['boi'])
-def boi():
-  print("работает")
-
 @bot.message_handler(commands=['test'])
 def test_message():
   URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
