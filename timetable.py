@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from telebot import types
 from multiprocessing.context import Process
-bot = telebot.TeleBot("1661490916:AAFkeqWMCVbSqk722ERR7ljzbrgQzl_4ecg")
+bot = telebot.TeleBot("1407745525:AAFtQlzk9A99dKX0naKXPNynUAXozY2CrW0")
 @bot.message_handler(commands=['start'])
 def start_handler(message):
   bot.send_message(message.chat.id, "Для получения ссылки на скачку расписания пропиши: /link. \nДля отображения информации для входа конференций Zoom пропиши: /info")
@@ -15,7 +15,11 @@ def start_handler(message):
 def help_handler(message):
   bot.send_message(message.chat.id,"/link - для получения информации, /info - пароли для зума")
 
-group_id = -403477493
+group_id = -599081025
+
+@bot.message_handler(commands=['boi'])
+def boi():
+  print("работает")
 
 @bot.message_handler(commands=['test'])
 def test_message():
@@ -66,7 +70,7 @@ def test_message():
       orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
 
-schedule.every().friday.at("19:00").do(test_message)
+schedule.every().tuesday.at("02:12").do(test_message)
 
 class ScheduleMessage():
   def try_send_schedule():
