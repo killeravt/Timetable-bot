@@ -16,7 +16,6 @@ def help_handler(message):
   bot.send_message(message.chat.id,"/link - для получения информации, /info - пароли для зума")
 
 group_id = -403477493
-#-403477493
 #-599081025
 
 @bot.message_handler(commands=['test'])
