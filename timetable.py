@@ -69,8 +69,8 @@ def test_message():
       orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
 
-#schedule.every().friday.at("19:00").do(test_message)
-schedule.every().friday.at("14:28").do(test_message)
+schedule.every().friday.at("19:00").do(test_message)
+
 
 class ScheduleMessage():
   def try_send_schedule():
