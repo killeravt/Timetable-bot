@@ -26,7 +26,7 @@ def test_message():
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
   full_page = requests.get(URL, headers=headers)
   soup = BeautifulSoup(full_page.content, 'html.parser')
-  c = 107
+  c = 103
   roz = soup.findAll('a', href=True)[c]
   res = roz
   if "3 курс (ФЕМ, ФІСТ)" in res:
@@ -88,7 +88,7 @@ def link_handler(message):
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 OPR/78.0.4093.186'}
   full_page = requests.get(URL, headers=headers)
   soup = BeautifulSoup(full_page.content, 'html.parser')
-  c = 107
+  c = 103
   roz = soup.findAll('a', href=True)[c]
   res = roz
   print(roz)
