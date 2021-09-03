@@ -15,28 +15,30 @@ def start_handler(message):
 def help_handler(message):
   bot.send_message(message.chat.id,"/link - для получения информации, /info - пароли для зума")
 
-group_id = -403477493
-#-599081025
+#группа -1001364384740
+# колиж -403477493
+#тест -599081025
 
 @bot.message_handler(commands=['test'])
 def test_message():
+  group_id = -1001364384740
   URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
   full_page = requests.get(URL, headers=headers)
   soup = BeautifulSoup(full_page.content, 'html.parser')
-  c = 96
+  c = 107
   roz = soup.findAll('a', href=True)[c]
   res = roz
-  if "2 курс (ФЕМ, ФІСТ)" in res:
+  if "3 курс (ФЕМ, ФІСТ)" in res:
     cont = "yes"
   else:
     cont = "no"
   if cont == "yes":
     orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-    orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+    orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
     bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
   if cont == "no":
-    if "3 курс (ФЕМ, ФІСТ)" in res:
+    if "4 курс (ФЕМ, ФІСТ)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
@@ -44,19 +46,19 @@ def test_message():
       roz = soup.findAll('a', href=True)[c-1]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
-    if "4 курс (ФЕМ, ФІСТ)" in res:
+    if "1 курс (всі спеціальності)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
       soup = BeautifulSoup(full_page.content, 'html.parser')
-      roz = soup.findAll('a', href=True)[c-2]
+      roz = soup.findAll('a', href=True)[c+2]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
-    if "1 курс (всі спеціальності)" in res:
+    if "2 курс (ФЕМ, ФІСТ)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
@@ -64,10 +66,11 @@ def test_message():
       roz = soup.findAll('a', href=True)[c+1]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(group_id, "Расписание на следующую уже известно:\n" + orig2)
 
-schedule.every().friday.at("19:00").do(test_message)
+#schedule.every().friday.at("19:00").do(test_message)
+schedule.every().friday.at("14:28").do(test_message)
 
 class ScheduleMessage():
   def try_send_schedule():
@@ -85,19 +88,20 @@ def link_handler(message):
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
   full_page = requests.get(URL, headers=headers)
   soup = BeautifulSoup(full_page.content, 'html.parser')
-  c = 96
+  c = 107
   roz = soup.findAll('a', href=True)[c]
   res = roz
-  if "2 курс (ФЕМ, ФІСТ)" in res:
+  print(roz)
+  if "3 курс (ФЕМ, ФІСТ)" in res:
     cont = "yes"
   else:
     cont = "no"
   if cont == "yes":
     orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-    orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+    orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
     bot.send_message(message.chat.id, orig2)
   if cont == "no":
-    if "3 курс (ФЕМ, ФІСТ)" in res:
+    if "4 курс (ФЕМ, ФІСТ)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
@@ -105,19 +109,19 @@ def link_handler(message):
       roz = soup.findAll('a', href=True)[c-1]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(message.chat.id, orig2)
-    if "4 курс (ФЕМ, ФІСТ)" in res:
+    if "1 курс (всі спеціальності)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
       soup = BeautifulSoup(full_page.content, 'html.parser')
-      roz = soup.findAll('a', href=True)[c-2]
+      roz = soup.findAll('a', href=True)[c+2]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(message.chat.id, orig2)
-    if "1 курс (всі спеціальності)" in res:
+    if "2 курс (ФЕМ, ФІСТ)" in res:
       URL = 'https://e-u.in.ua/ua/studentu/rozklad-zanjat/'
       headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.456'}
       full_page = requests.get(URL, headers=headers)
@@ -125,8 +129,9 @@ def link_handler(message):
       roz = soup.findAll('a', href=True)[c+1]
       res = roz
       orig1 = str(res).replace('<a href=".',"https://e-u.in.ua/ua/studentu/rozkrad-zanjat")
-      orig2 = str(orig1).replace('" target="_blank">2 курс (ФЕМ, ФІСТ)</a>', '')
+      orig2 = str(orig1).replace('" target="_blank">3 курс (ФЕМ, ФІСТ)</a>', '')
       bot.send_message(message.chat.id, orig2)
+
 
 @bot.message_handler(commands=['ukr'])
 def ukr_handler(message):
