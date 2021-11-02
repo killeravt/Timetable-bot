@@ -93,11 +93,15 @@ def ukr_handler(message):
   bot.send_message(message.chat.id, "111111")
   bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us05web.zoom.us/j/84098239232?pwd%3Dd0haa1NwYlRybmZwZ05qNlB1dm4zQT09&sa=D&source=editors&ust=1634554573985000&usg=AOvVaw2VLD8UGixvUyRgO2tNrI6h")
   
+@bot.message_handler(commands=['mereji'])
+def ukr_handler(message):
+  bot.send_message(message.chat.id, "Левченко С. В")
+  bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us04web.zoom.us/j/6878969975?pwd%3DTzRpT05zaXkxMW04eUEzdWxMYzNJZz10&sa=D&source=editors&ust=1635835920524000&usg=AOvVaw0SbNBNyHtwFKPKp1tJUIWp")
 
 
 @bot.message_handler(commands=['info'])
 def info_handler(message):
-  bot.send_message(message.chat.id, "Команды для зума: Комп. системи - /system \n Англ мова - /angl \n Програмування - /prog")
+  bot.send_message(message.chat.id, "Команды для зума: Комп. системи - /system \n Англ мова - /angl \n Програмування - /prog \n Орг. комп. мереж - /mereji")
 
 
 bot.polling(none_stop=True)
