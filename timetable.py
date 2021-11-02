@@ -96,7 +96,7 @@ def ukr_handler(message):
 @bot.message_handler(commands=['mereji'])
 def ukr_handler(message):
   bot.send_message(message.chat.id, "Левченко С. В")
-  bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us04web.zoom.us/j/6878969975?pwd%3DTzRpT05zaXkxMW04eUEzdWxMYzNJZz10&sa=D&source=editors&ust=1635835920524000&usg=AOvVaw0SbNBNyHtwFKPKp1tJUIWp")
+  bot.send_message(message.chat.id, "https://us04web.zoom.us/j/6878969975?pwd=TzRpT05zaXkxMW04eUEzdWxMYzNJZz09")
 
 
 @bot.message_handler(commands=['info'])
