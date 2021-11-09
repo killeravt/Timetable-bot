@@ -76,7 +76,7 @@ def ukr_handler(message):
   bot.send_message(message.chat.id, "Котетунов В.Ю")
   bot.send_message(message.chat.id, "75816370994")
   bot.send_message(message.chat.id, "is7v4f")
-  bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us04web.zoom.us/j/6878969975?pwd%3DTzRpT05zaXkxMW04eUEzdWxMYzNJZz10&sa=D&source=editors&ust=1635835920524000&usg=AOvVaw0SbNBNyHtwFKPKp1tJUIWp")
+  bot.send_message(message.chat.id, "https://us02web.zoom.us/j/75816370994?pwd=d3QxR09JQWpqczFCdDVVQUFXOER6QT09")
 
 
 @bot.message_handler(commands=['angl'])
@@ -84,14 +84,14 @@ def ukr_handler(message):
   bot.send_message(message.chat.id, "Гараган К.О")
   bot.send_message(message.chat.id, "3435773605")
   bot.send_message(message.chat.id, "430668")
-  bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us04web.zoom.us/j/3435773605?pwd%3DZzY0a1ZVc1BOS1VIQTJmTEVuK0NCZz09&sa=D&source=editors&ust=1634554573979000&usg=AOvVaw2STuK7c37yGpyXYdt98W_f")
+  #bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us04web.zoom.us/j/3435773605?pwd%3DZzY0a1ZVc1BOS1VIQTJmTEVuK0NCZz09&sa=D&source=editors&ust=1634554573979000&usg=AOvVaw2STuK7c37yGpyXYdt98W_f")
 
 @bot.message_handler(commands=['prog'])
 def ukr_handler(message):
   bot.send_message(message.chat.id, "Тригубенко І. Б")
   bot.send_message(message.chat.id, "84098239232")
   bot.send_message(message.chat.id, "111111")
-  bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us05web.zoom.us/j/84098239232?pwd%3Dd0haa1NwYlRybmZwZ05qNlB1dm4zQT09&sa=D&source=editors&ust=1634554573985000&usg=AOvVaw2VLD8UGixvUyRgO2tNrI6h")
+  #bot.send_message(message.chat.id, "https://www.google.com/url?q=https://us05web.zoom.us/j/84098239232?pwd%3Dd0haa1NwYlRybmZwZ05qNlB1dm4zQT09&sa=D&source=editors&ust=1634554573985000&usg=AOvVaw2VLD8UGixvUyRgO2tNrI6h")
   
 @bot.message_handler(commands=['mereji'])
 def ukr_handler(message):
